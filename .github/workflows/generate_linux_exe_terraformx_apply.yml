@@ -50,3 +50,10 @@ jobs:
           git add .
           git commit -m "Update action exe"
           git push --set-upstream origin update_exe
+
+      - name: Create PR
+        run: |
+          echo "${{ secrets.ACCESS_TOKEN }}" > token.txt
+          gh auth login --with-token < token.txt
+          
+          gh pr create --body "" --title "Update exe version" --head "update_exe" --base "main"
