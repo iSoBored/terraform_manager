@@ -35,3 +35,9 @@ jobs:
       - name: Create branch
         working-directory: action_repo
         run: git checkout -b update_exe
+
+      - name: Update exe
+        working-directory: actions
+        run: |
+          cp dist/apply ../action_repo/apply
+          ls
