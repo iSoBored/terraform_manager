@@ -30,7 +30,7 @@ jobs:
           mv dist/github_action_terraformx_apply dist/apply
 
       - name: Clone action repo
-        run: git clone https://iSoBored:${{ secrets.ACCESS_TOKEN }}@github.com/iSoBored/action_terraformx_apply.git action_repo
+        run: git clone https://${{ github.repository_owner }}:${{ secrets.ACCESS_TOKEN }}@github.com/${{ github.repository_owner }}/action_terraformx_apply.git action_repo
 
       - name: Create branch
         working-directory: action_repo
@@ -49,6 +49,4 @@ jobs:
 
           git add .
           git commit -m "Update action exe"
-          git branch --set-upstream-to=origin/update_exe update_exe
-          git pull
           git push --set-upstream origin update_exe
