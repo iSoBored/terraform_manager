@@ -52,6 +52,7 @@ jobs:
           git push --set-upstream origin update_exe
 
       - name: Create PR
+        working-directory: action_repo
         run: |
           echo "${{ secrets.ACCESS_TOKEN }}" > token.txt
           gh auth login --with-token < token.txt
