@@ -1,8 +1,9 @@
 name: Generate Linux exe for Terraformx Apply Action
-on:
-  push:
-    tags:
-      - "release/github_action_terraformx_apply/v[012].[0-9]+.[0-9]+"
+on: [push]
+# on:
+#   push:
+#     tags:
+#       - "release/github_action_terraformx_apply/v[012].[0-9]+.[0-9]+"
       
 jobs:
   generate_linux_exe:
@@ -28,8 +29,9 @@ jobs:
           pyinstaller --onefile github_action_terraformx_apply.py -p $GITHUB_WORKSPACE -y
           mv dist/github_action_terraformx_apply dist/apply
 
-        shell: bash
-      - uses: actions/upload-artifact@v3
-        with:
-          name: apply
-          path: actions/dist/apply
+      - name: Clone action repo
+        run: clone https://github.com/iSoBored/action_terraformx_apply.git action_repo
+
+      - name: Create branch
+        working-directory: action_repo
+        run: git checkout -b update_exe
