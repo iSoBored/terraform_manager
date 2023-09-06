@@ -44,8 +44,8 @@ jobs:
       - name: Commit and push
         working-directory: action_repo
         run: |
-          git config user.email "nichlai02@gmail.com"
-          git config user.name "iSoBored"
+          git config user.email "test@gmail.com"
+          git config user.name "test"
 
           git add .
           git commit -m "Update action exe"
