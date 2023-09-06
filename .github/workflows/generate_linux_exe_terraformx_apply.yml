@@ -40,4 +40,11 @@ jobs:
         working-directory: actions
         run: |
           cp dist/apply ../action_repo/apply
+
+      - name: Commit and push
+        working-directory: action_repo
+        run: |
           ls
+          git add .
+          git commit -m "Update action exe"
+          git push
