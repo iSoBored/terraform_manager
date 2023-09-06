@@ -1,9 +1,8 @@
 name: Generate Linux exe for Terraformx Apply Action
-on: [push]
-# on:
-#   push:
-#     tags:
-#       - "release/github_action_terraformx_apply/v[012].[0-9]+.[0-9]+"
+on:
+  push:
+    tags:
+      - "release/github_action_terraformx_apply/v[012].[0-9]+.[0-9]+"
       
 jobs:
   generate_linux_exe:
@@ -44,7 +43,7 @@ jobs:
       - name: Commit and push
         working-directory: action_repo
         run: |
-          git config user.email "test@gmail.com"
+          git config user.email "test@example.com"
           git config user.name "test"
 
           git add .
