@@ -6,7 +6,7 @@
 #define MyAppPublisher "jlieow"
 #define MyAppURL ""
 #define MyAppExeName "Terraformx"
-#define FileDest "{commonpf32}\Terraform Manager\cli"
+#define FileDest "{code:GetProgramFiles}\Terraform Manager\cli"
 
 [Setup]
 Uninstallable=yes
@@ -26,9 +26,8 @@ ChangesEnvironment=yes
 
 [Registry]
 Root: HKCU; Subkey: "Environment"; \
-    ValueType: string; ValueName: "Path"; ValueData: "{olddata};{#FileDest}"; \
-    Check: NeedsAddPath('{#FileDest}'); \
-    Flags: createvalueifdoesntexist
+    ValueType: expandsz; ValueName: "Path"; ValueData: "{olddata};{#FileDest}"; \
+    Check: NeedsAddPath('{#FileDest}');
 
 [Code]
 function NeedsAddPath(Param: string): boolean;
