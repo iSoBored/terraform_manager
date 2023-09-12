@@ -19,15 +19,14 @@ jobs:
 
       - name: Install Dependencies and PyInstaller
         run: pip install -r $GITHUB_WORKSPACE/requirements.txt
-        shell: bash
 
       - name: Generate Windows exe with pyinstaller onefile
         working-directory: terraformx
         run: |
           pyinstaller --onefile terraformx.py -p $GITHUB_WORKSPACE -y
 
-        shell: bash
-      - uses: actions/upload-artifact@v3
-        with:
-          name: terraformx
-          path: terraformx/dist/terraformx.exe
+      - name: Run Inno Setup
+        working-directory: terraformx
+        run: |
+          iscc terraform.iss
+          dir
