@@ -34,6 +34,7 @@ jobs:
         shell: bash
 
       - name: Edit Version Number in terraformx.iss File
+        working-directory: terraformx
         run: sed -i "s~#define MyAppVersion.*~#define MyAppVersion \"$version\"~" terraformx.iss
         shell: bash
 
