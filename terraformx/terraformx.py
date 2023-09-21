@@ -94,7 +94,14 @@ def default(args):
 
 def main():
     # export environmental variables from /config/.env if it exists
+    # also checks for quotes in the file
     if os.path.isfile(os.path.join("config", ".env")):
+        with open(os.path.join("config", ".env"), mode="r") as f:
+            contents = f.read()
+            if "'" in contents or '"' in contents:
+                print_error("Quotes found in .env file, please remove them.")
+                return
+
         if sys.platform == "win32":
             load_nt_env(os.path.join("config", ".env"))
         else:
