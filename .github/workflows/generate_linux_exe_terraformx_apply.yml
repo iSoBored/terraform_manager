@@ -57,3 +57,8 @@ jobs:
           gh auth login --with-token < token.txt
           
           gh pr create --body "" --title "Update exe version" --head "update_exe" --base "main"
+
+      - uses: actions/upload-artifact@v3
+        with:
+          name: apply
+          path: actions/dist/apply
